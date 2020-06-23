@@ -7,7 +7,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=30)
     phone = models.CharField(max_length=30)
     email = models.EmailField()
-    time_create = models.DateTimeField(auto_now_add=True)
+    time_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -24,6 +24,9 @@ class Product(models.Model):
     category = models.CharField(max_length=30, choices=CATEGORY)
     description = models.TextField(blank=True, null=True)
     time_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):

@@ -5,33 +5,43 @@
     <div style="height: 30px;"></div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card bg-info shadow  text-center">
                     <div class="card-header">
                         <h3 class="card-title">Total Orders</h3>
                     </div>
                     <div class="card-body">
-                        <h3>Total Order Numbers</h3>
+                        <h3>{{ o_count }}</h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card bg-info shadow  text-center">
                     <div class="card-header">
                         <h3 class="card-title">Order Delivered</h3>
                     </div>
                     <div class="card-body">
-                        <h3>Delivery Numbers</h3>
+                        <h3>{{ order_d_count }}</h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <div class="card bg-info shadow  text-center">
+                    <div class="card-header">
+                        <h3 class="card-title">Out for Delivery</h3>
+                    </div>
+                    <div class="card-body">
+                        <h3>{{ order_o_count }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="card bg-info shadow  text-center">
                     <div class="card-header">
                         <h3 class="card-title">Pending Orders</h3>
                     </div>
                     <div class="card-body">
-                        <h3>Pending Order Numbers</h3>
+                        <h3>{{ order_p_count }}</h3>
                     </div>
                 </div>
             </div>
@@ -43,7 +53,7 @@
     <div style="height: 10px;"></div>
 
     <div class="container-fluid">
-        <h3>Total Customer: XX</h3>
+        <h3>Total Customer: {{ c_count }}</h3>
     </div>
 
     <div style="height: 10px;"></div>
@@ -68,13 +78,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                    </tr>
+                      {% for i in customer reversed %}
+                        <tr>
+                          <th scope="row">{{ i.id }}</th>
+                          <td>{{ i.name }}</td>
+                          <td>{{ i.phone }}</td>
+                          <td>{{ i.email }}</td>
+                          <td>{{ i.time_created }}</td>
+                        </tr>
+                      {% endfor %}
                   </tbody>
                 </table>
             </div>
@@ -94,13 +106,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                    </tr>
+                      {% for j in last_five %}
+                        <tr>
+                          <th scope="row">{{ j.id }}</th>
+                          <td>{{ j.customer }}</td>
+                          <td>{{ j.product }}</td>
+                          <td>{{ j.time_created }}</td>
+                          <td>{{ j.status }}</td>
+                        </tr>
+                      {% endfor %}
                   </tbody>
                 </table>
             </div>
