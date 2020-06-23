@@ -9,6 +9,9 @@ class Customer(models.Model):
     email = models.EmailField()
     time_create = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     CATEGORY = (

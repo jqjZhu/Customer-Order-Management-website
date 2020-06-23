@@ -9,9 +9,7 @@
     <title>{% block title %}homepage{% endblock %}</title>
 </head>
 <body>
-    <div class="container">
-        {% include 'Japp/navbar.html' %}
-    </div>
+    {% include 'Japp/navbar.html' %}
 
     {% block content %}
         {% include 'Japp/home.html' %}
