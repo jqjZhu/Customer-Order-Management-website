@@ -8,8 +8,31 @@ from .models import Customer, Order
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        fields = '__all__'
-        exclude = ['time_created']
+        fields = [
+            'name',
+            'phone',
+            'email'
+        ]
+        labels = {
+            'name': 'name',
+            'phone': 'phone',
+            'email': 'email'
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Please enter your name'
+            }),
+            'phone': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Please enter your phone number'
+            }),
+            'email': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Please enter your email'
+            })
+        }
+
 
 
 class OrderForm(ModelForm):
