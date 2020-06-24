@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Customer, Product, Order
+from .forms import CustomerForm, OrderForm
 
 
 # Create your views here.
@@ -37,6 +38,11 @@ def homepage(request):
 
 
 def create(request):
+    c_form = CustomerForm()
+    o_form = OrderForm()
 
-    context = {}
+    context = {
+        'c_form': c_form,
+        'o_form': o_form
+    }
     return render(request, 'Japp/create.html', context)
