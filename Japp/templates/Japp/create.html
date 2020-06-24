@@ -8,12 +8,14 @@
         <div class="row">
             <div class="col-md-6">
                 <form action="{% url 'create' %}" method="o=post">
-                    {{ c_form }}
+                    {{ c_form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div class="col-md-6">
                 <form action="{% url 'create' %}" method="o=post">
-                    {{ o_form }}
+                    {{ o_form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
