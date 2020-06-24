@@ -34,3 +34,9 @@ def homepage(request):
         'last_five': last_five
     }
     return render(request, 'Japp/index.html', context)
+
+
+def create(request):
+
+    context = {}
+    return render(request, 'Japp/create.html', context)

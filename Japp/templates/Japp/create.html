@@ -1,0 +1,20 @@
+{% extends 'Japp/index.html' %}
+
+{% block title %}Create{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="{% url 'create' %}" method="o=post">
+                    <input>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form action="{% url 'create' %}" method="o=post"></form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
