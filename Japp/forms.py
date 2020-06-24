@@ -13,10 +13,11 @@ class CustomerForm(ModelForm):
             'phone',
             'email'
         ]
+        exclude = ['time_created']
         labels = {
-            'name': 'name',
-            'phone': 'phone',
-            'email': 'email'
+            'name': 'Name',
+            'phone': 'Phone',
+            'email': 'Email'
         }
         widgets = {
             'name': forms.TextInput(attrs={
@@ -40,3 +41,22 @@ class OrderForm(ModelForm):
         model = Order
         fields = '__all__'
         exclude = ['time_created']
+        labels = {
+            'customer': 'Customer',
+            'product': 'Product',
+            'status': 'Order Status'
+        }
+        widgets = {
+            'customer': forms.Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Please enter your name'
+            }),
+            'product': forms.Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Please enter your phone number'
+            }),
+            'status': forms.Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Please enter your email'
+            })
+        }
