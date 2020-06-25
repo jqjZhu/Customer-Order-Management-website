@@ -1,6 +1,6 @@
 {#{% extends 'Japp/index.html' %}#}
 
-{% block title %}{% endblock %}
+{% block title %}Homepage{% endblock %}
 
 {% block content %}
     <div style="height: 30px;"></div>
@@ -100,7 +100,13 @@
                 </table>
             </div>
             <div class="col-md-6 text-center">
-                <h4>Last 5 Orders</h4>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h4 class="text-right">Last 5 Orders</h4>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
                 <table class="table">
                   <thead class="thead-light">
                     <tr>
@@ -122,10 +128,10 @@
                           <td>{{ j.time_created }}</td>
                           <td>{{ j.status }}</td>
                           <td>
-                              <a href="" class="btn btn-sm btn-warning">Update</a>
+                              <a href="{% url 'updateorder' j.id%}" class="btn btn-sm btn-warning">Update</a>
                           </td>
                           <td>
-                              <a href="" class="btn btn-sm btn-danger">Delete</a>
+                              <a href="{% url 'deleteorder' j.id%}" class="btn btn-sm btn-danger">Delete</a>
                           </td>
                         </tr>
                       {% endfor %}

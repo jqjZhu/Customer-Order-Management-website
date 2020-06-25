@@ -72,3 +72,41 @@ def create(request):
     }
 
     return render(request, 'Japp/create.html', context)
+
+
+def update_order(request, pk):
+    order = Order.objects.get(id=pk)
+
+    o_form = OrderForm(instance=order)
+
+    if request.method == 'POST':
+        o_form = OrderForm(request.POST)
+        if o_form.is_valid():
+            customer_get = o_form.cleaned_data['customer']
+            product_get = o_form.cleaned_data['product']
+            status_get = o_form.cleaned_data['status']
+            order = Order.objects.filter(id=pk)
+            order.update(id=pk,
+                         customer=customer_get,
+                         product=product_get,
+                         status=status_get)
+            return redirect('homepage')
+
+    context = {
+        'order': order,
+        'o_form': o_form
+    }
+    return render(request, 'Japp/updateorder.html', context)
+
+
+def delete_order(request, pk):
+    order = Order.objects.get(id=pk)
+
+    if request.method == 'POST':
+        order.delete()
+        return redirect('homepage')
+
+    context = {
+        'order': order
+    }
+    return render(request, 'Japp/deleteorder.html', context)

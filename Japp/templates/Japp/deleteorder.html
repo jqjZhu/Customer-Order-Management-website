@@ -1,0 +1,47 @@
+{% extends 'Japp/index.html' %}
+
+{% block title %}Delete Order{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div style="height:100px;"></div>
+                <div class="card shadow text-center">
+                    <div class="card-header">
+                        <div class="text-title">
+                            <h4>Are you sure you wanted to delete order?</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">Customer</th>
+                              <th scope="col">Product</th>
+                              <th scope="col">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{{ order.customer }}</td>
+                              <td>{{ order.product }}</td>
+                              <td>{{ order.status }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <form action="{% url 'deleteorder' order.id %}" method="post">
+                            {% csrf_token %}
+                            <a href="{% url 'homepage' %}" class="btn btn-warning">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+{% endblock %}

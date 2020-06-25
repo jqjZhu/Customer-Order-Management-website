@@ -1,0 +1,31 @@
+{% extends 'Japp/index.html' %}
+
+{% block title %}Update Order{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div style="height: 100px;"></div>
+                <div class="card shadow">
+                    <div class="card-header text-center text-light bg-dark">
+                        <h3 class="card-title">Update Order</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'updateorder' order.id %}" method="post">
+                            {% csrf_token %}
+                            {{ o_form.as_p }}
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+{% endblock %}
